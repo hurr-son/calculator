@@ -7,77 +7,78 @@ const multiplyBtn = document.getElementById("multiply")
 const divideBtn = document.getElementById("divide")
 const equalsBtn = document.getElementById("equals")
 const clearBtn = document.getElementById("clear");
+let operator = '+';
+let firstNum = '1';
+let secondNum = '6';
 
-//I want to be able to store the selected operator so the 
-//operate function can call it when clicked.
+
+
+function add(a, b) {
+    return parseFloat(a) + parseFloat(b);
+};
+
+function subract(a, b) {
+    return parseFloat(a) - parseFloat(b);
+};
+
+function multiply(a, b) {
+    return parseFloat(a) * parseFloat(b);
+};
+
+function divide(a, b) {
+    return parseFloat(a) / parseFloat(b);
+};
 
 
 
-let calcLog = {value1: 0, value2: 0};
-let operators = {
-    '+': add,
-    '-': subract,
-    '*': multiply,
-    '/': divide,
+
+function operate(operator, num1, num2) {
+    switch(operator) {
+    case '+':
+        return add(num1, num2);
+    case '-':
+        return subract(num1, num2);
+    case '*':
+        return multiply(num1, num2);
+    case '/':
+        return divide(num1, num2)  
+    }
+
+};
+
+
+
+function updateDisplay(e) {
+    display.innerHTML = e.target.textContent 
 }
 
+function clearDisplay() {
 
-
-
-operatorsBtns.forEach(button => {button.addEventListener('click',
-function() {
-    display.innerHTML = button.textContent
-    key =  button.textContent
 }
-)})
+
 
 
 digits.forEach(digit => {digit.addEventListener('click', function() {
     
     display.innerHTML = digit.innerHTML;
-    if (calcLog.value1 === 0) {
-        calcLog.value1 =  parseInt(digit.innerHTML)
+
+    if(firstNum == undefined){
+        firstNum = digit.innerHTML
+    }    
+    else if(firstNum !== undefined && secondNum == undefined) {
+        secondNum = digit.innerHTML
     }
-    else if (calcLog.value1 !== 0 && calcLog.value2 === 0) {
-        calcLog.value2 = parseInt(digit.innerHTML)
-    }
+    
 })})
 
+operatorsBtns.forEach(button => {button.addEventListener('click', function() {
+    operator = button.textContent
+    display.innerHTML = button.textContent
+}
+
+)})
 
 
-function operate(operator, a, b) {
-    
-    display.innerHTML = operator.call(this, a, b);
-};
-let key = '';
-subtractBtn.click()
-let chosenOperator = operators[key]
-console.log(key)
-console.log(operators[key])
+equalsBtn.addEventListener('click', operate)
 
-equalsBtn.addEventListener('click', operate
-
-)
-
-console.log(operate(chosenOperator, 5, 1))
-
-
-
-
-function add(a, b) {
-    return (a + b);
-};
-
-function subract(a, b) {
-    return (a - b);
-};
-
-function multiply(a, b) {
-    return (a * b);
-};
-
-function divide(a, b) {
-    return (a / b);
-};
-
-
+console.log(operate(operator, firstNum, secondNum))
