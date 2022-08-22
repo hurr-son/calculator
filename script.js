@@ -1,15 +1,19 @@
 const digits = document.querySelectorAll(".digit");
 const operatorsBtns = document.querySelectorAll(".operatorBtn");
 const display = document.getElementById("display");
+const pointBtn = document.getElementById("point")
 const addBtn = document.getElementById("add")
 const subtractBtn = document.getElementById("subtract")
 const multiplyBtn = document.getElementById("multiply")
 const divideBtn = document.getElementById("divide")
 const equalsBtn = document.getElementById("equals")
 const clearBtn = document.getElementById("clear");
-let operator = '+';
-let firstNum = '1';
-let secondNum = '6';
+
+const cumulativeArg = {
+operator: '', 
+firstArg: '', 
+secondArg: ''
+}
 
 
 
@@ -29,9 +33,6 @@ function divide(a, b) {
     return parseFloat(a) / parseFloat(b);
 };
 
-
-
-
 function operate(operator, num1, num2) {
     switch(operator) {
     case '+':
@@ -41,44 +42,51 @@ function operate(operator, num1, num2) {
     case '*':
         return multiply(num1, num2);
     case '/':
-        return divide(num1, num2)  
+        return divide(num1, num2);  
     }
-
+ 
 };
 
-
-
-function updateDisplay(e) {
-    display.innerHTML = e.target.textContent 
+function updateDisplay() {
+    display.innerHTML = 
+   `${cumulativeArg.firstArg} 
+    ${cumulativeArg.operator}
+    ${cumulativeArg.secondArg}`
 }
 
 function clearDisplay() {
-
+    cumulativeArg.firstArg = ''
+    cumulativeArg.operator = ''
+    cumulativeArg.secondArg = ''
+    updateDisplay()
 }
 
-
+clearBtn.addEventListener('click', clearDisplay);
 
 digits.forEach(digit => {digit.addEventListener('click', function() {
     
-    display.innerHTML = digit.innerHTML;
-
-    if(firstNum == undefined){
-        firstNum = digit.innerHTML
+    if(cumulativeArg.firstArg === ''){
+        cumulativeArg.firstArg = digit.innerHTML;
+        updateDisplay();
     }    
-    else if(firstNum !== undefined && secondNum == undefined) {
-        secondNum = digit.innerHTML
+    else if(cumulativeArg.firstArg !== '' && cumulativeArg.secondArg === '') {
+        cumulativeArg.secondArg = digit.innerHTML;
+        updateDisplay();
     }
     
 })})
 
 operatorsBtns.forEach(button => {button.addEventListener('click', function() {
-    operator = button.textContent
-    display.innerHTML = button.textContent
+    cumulativeArg.operator = button.textContent;
+    updateDisplay()
+
 }
 
 )})
 
 
-equalsBtn.addEventListener('click', operate)
+equalsBtn.addEventListener('click', function() {
+    operate(cumulativeArg.operator, parseFloat(cumulativeArg.firstArg), parseFloat(cumulativeArg.secondArg));
+    updateDisplay();
+})
 
-console.log(operate(operator, firstNum, secondNum))
