@@ -44,7 +44,7 @@ function operate(operator, num1, num2) {
     case '/':
         return divide(num1, num2);  
     }
- 
+   
 };
 
 function updateDisplay() {
@@ -59,6 +59,13 @@ function clearDisplay() {
     cumulativeArg.operator = ''
     cumulativeArg.secondArg = ''
     updateDisplay()
+}
+
+function updateSolution() {
+    cumulativeArg.firstArg = operate(cumulativeArg.operator, parseFloat(cumulativeArg.firstArg), parseFloat(cumulativeArg.secondArg))
+    display.innerHTML = cumulativeArg.firstArg;
+    cumulativeArg.operator = ''
+    cumulativeArg.secondArg = ''
 }
 
 clearBtn.addEventListener('click', clearDisplay);
@@ -86,7 +93,7 @@ operatorsBtns.forEach(button => {button.addEventListener('click', function() {
 
 
 equalsBtn.addEventListener('click', function() {
-    operate(cumulativeArg.operator, parseFloat(cumulativeArg.firstArg), parseFloat(cumulativeArg.secondArg));
-    updateDisplay();
+    updateSolution();
 })
 
+console.log(operate(cumulativeArg.operator, parseFloat(cumulativeArg.firstArg), parseFloat(cumulativeArg.secondArg)))
