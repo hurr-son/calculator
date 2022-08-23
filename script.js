@@ -75,13 +75,16 @@ digits.forEach(digit => {digit.addEventListener('click', function() {
     if(cumulativeArg.firstArg === ''){
         cumulativeArg.firstArg = digit.innerHTML;
         updateDisplay();
+        
     }    
-    else if(cumulativeArg.firstArg !== '' && cumulativeArg.secondArg === '') {
+    else if((cumulativeArg.firstArg !== '' ) && (cumulativeArg.secondArg === '')) {
         cumulativeArg.secondArg = digit.innerHTML;
         updateDisplay();
     }
     
 })})
+
+
 
 operatorsBtns.forEach(button => {button.addEventListener('click', function() {
     cumulativeArg.operator = button.textContent;
