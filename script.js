@@ -67,6 +67,7 @@ function clearDisplay() {
 
 function updateSolution() {
     cumulativeArg.firstArg = operate(cumulativeArg.operator, parseFloat(cumulativeArg.firstArg), parseFloat(cumulativeArg.secondArg)).toFixed(2);
+    
     display.innerHTML = cumulativeArg.firstArg;
     cumulativeArg.operator = ''
     cumulativeArg.secondArg = ''
