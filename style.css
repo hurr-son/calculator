@@ -1,0 +1,25 @@
+
+
+.container {
+    display: grid;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+.digits,
+.operatorBtns {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    
+}
+
+button {
+    
+    font-size: 35px;
+    padding: 10px;
+}
+
+#display {
+    font-size: 45px;
+    text-align: end;
+}
