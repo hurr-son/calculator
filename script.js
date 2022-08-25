@@ -1,13 +1,17 @@
 const digits = document.querySelectorAll(".digit");
 const operatorsBtns = document.querySelectorAll(".operatorBtn");
 const display = document.getElementById("display");
-const pointBtn = document.getElementById("point")
 const addBtn = document.getElementById("add")
 const subtractBtn = document.getElementById("subtract")
 const multiplyBtn = document.getElementById("multiply")
 const divideBtn = document.getElementById("divide")
 const equalsBtn = document.getElementById("equals")
 const clearBtn = document.getElementById("clear");
+
+
+
+
+
 
 const cumulativeArg = {
 operator: '', 
@@ -62,7 +66,7 @@ function clearDisplay() {
 }
 
 function updateSolution() {
-    cumulativeArg.firstArg = operate(cumulativeArg.operator, parseFloat(cumulativeArg.firstArg), parseFloat(cumulativeArg.secondArg))
+    cumulativeArg.firstArg = operate(cumulativeArg.operator, parseFloat(cumulativeArg.firstArg), parseFloat(cumulativeArg.secondArg)).toFixed(2);
     display.innerHTML = cumulativeArg.firstArg;
     cumulativeArg.operator = ''
     cumulativeArg.secondArg = ''
@@ -98,5 +102,3 @@ operatorsBtns.forEach(button => {button.addEventListener('click', function() {
 equalsBtn.addEventListener('click', function() {
     updateSolution();
 })
-
-console.log(operate(cumulativeArg.operator, parseFloat(cumulativeArg.firstArg), parseFloat(cumulativeArg.secondArg)))
