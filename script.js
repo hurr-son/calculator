@@ -10,16 +10,37 @@ const clearBtn = document.getElementById("clear");
 
 
 document.addEventListener('mousedown', (event) => {
-    if(event.target.innerHTML == "0") {display.innerHTML += event.target.innerHTML}
-    if(event.target.innerHTML == "1") {display.innerHTML += event.target.innerHTML}
-    if(event.target.innerHTML == "2") {display.innerHTML += event.target.innerHTML}
-    if(event.target.innerHTML == "3") {display.innerHTML += event.target.innerHTML}
-    if(event.target.innerHTML == "4") {display.innerHTML += event.target.innerHTML}
-    if(event.target.innerHTML == "5") {display.innerHTML += event.target.innerHTML}
-    if(event.target.innerHTML == "6") {display.innerHTML += event.target.innerHTML}
-    if(event.target.innerHTML == "7") {display.innerHTML += event.target.innerHTML}
-    if(event.target.innerHTML == "8") {display.innerHTML += event.target.innerHTML}
-    if(event.target.innerHTML == "9") {display.innerHTML += event.target.innerHTML}
+    if(event.target.innerHTML == "0") 
+    {display.innerHTML += event.target.innerHTML;
+    getArgs();}
+    if(event.target.innerHTML == "1") 
+    {display.innerHTML += event.target.innerHTML;
+    getArgs();}
+    if(event.target.innerHTML == "2") 
+    {display.innerHTML += event.target.innerHTML;
+    getArgs();}
+    if(event.target.innerHTML == "3") 
+    {display.innerHTML += event.target.innerHTML;
+    getArgs();}
+    if(event.target.innerHTML == "4") 
+    {display.innerHTML += event.target.innerHTML;
+    getArgs();}
+    if(event.target.innerHTML == "5") 
+    {display.innerHTML += event.target.innerHTML;
+    getArgs();}
+    if(event.target.innerHTML == "6") 
+    {display.innerHTML += event.target.innerHTML;
+    getArgs();}
+    if(event.target.innerHTML == "7") 
+    {display.innerHTML += event.target.innerHTML;
+    getArgs();}
+    if(event.target.innerHTML == "8") 
+    {display.innerHTML += event.target.innerHTML;
+    getArgs();}
+    if(event.target.innerHTML == "9") 
+    {display.innerHTML += event.target.innerHTML;
+    getArgs();}
+
 })
 
 
@@ -94,11 +115,11 @@ function updateSolution() {
 }
 
 
-digits.forEach(digit => {digit.addEventListener('click', function() {
+// digits.forEach(digit => {digit.addEventListener('click', function() {
     
-    getArgs()
+//     getArgs()
     
-})})
+// })})
 
 
 
