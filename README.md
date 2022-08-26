@@ -1,10 +1,6 @@
 # calculator
 
-Find Solutions To
+A simple calculator that only takes two arguments and the four main math operators.
 
--Call operator function and stored digit 
-values with the operate button. Display those results.
+Just added keyboard support.
 
--Add clearing function and hook it up to the button.
-
--Allow for more than one operator to work at once
