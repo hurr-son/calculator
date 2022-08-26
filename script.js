@@ -9,7 +9,18 @@ const equalsBtn = document.getElementById("equals")
 const clearBtn = document.getElementById("clear");
 
 
-
+document.addEventListener('mousedown', (event) => {
+    if(event.target.innerHTML == "0") {display.innerHTML += event.target.innerHTML}
+    if(event.target.innerHTML == "1") {display.innerHTML += event.target.innerHTML}
+    if(event.target.innerHTML == "2") {display.innerHTML += event.target.innerHTML}
+    if(event.target.innerHTML == "3") {display.innerHTML += event.target.innerHTML}
+    if(event.target.innerHTML == "4") {display.innerHTML += event.target.innerHTML}
+    if(event.target.innerHTML == "5") {display.innerHTML += event.target.innerHTML}
+    if(event.target.innerHTML == "6") {display.innerHTML += event.target.innerHTML}
+    if(event.target.innerHTML == "7") {display.innerHTML += event.target.innerHTML}
+    if(event.target.innerHTML == "8") {display.innerHTML += event.target.innerHTML}
+    if(event.target.innerHTML == "9") {display.innerHTML += event.target.innerHTML}
+})
 
 
 
@@ -51,10 +62,18 @@ function operate(operator, num1, num2) {
    
 };
 
+function getArgs() {
+    if((cumulativeArg.firstArg == '') || (cumulativeArg.operator == '')){
+        cumulativeArg.firstArg = display.innerHTML;
+
+    }    
+    else  {
+        cumulativeArg.secondArg = display.innerHTML;
+}}
+
 function updateDisplay() {
     display.innerHTML = 
    `${cumulativeArg.firstArg} 
-    ${cumulativeArg.operator}
     ${cumulativeArg.secondArg}`
 }
 
@@ -71,21 +90,13 @@ function updateSolution() {
     display.innerHTML = cumulativeArg.firstArg;
     cumulativeArg.operator = ''
     cumulativeArg.secondArg = ''
+    updateDisplay()
 }
 
-clearBtn.addEventListener('click', clearDisplay);
 
 digits.forEach(digit => {digit.addEventListener('click', function() {
     
-    if(cumulativeArg.firstArg === ''){
-        cumulativeArg.firstArg = digit.innerHTML;
-        updateDisplay();
-        
-    }    
-    else if((cumulativeArg.firstArg !== '' ) && (cumulativeArg.secondArg === '')) {
-        cumulativeArg.secondArg = digit.innerHTML;
-        updateDisplay();
-    }
+    getArgs()
     
 })})
 
@@ -93,8 +104,8 @@ digits.forEach(digit => {digit.addEventListener('click', function() {
 
 operatorsBtns.forEach(button => {button.addEventListener('click', function() {
     cumulativeArg.operator = button.textContent;
-    updateDisplay()
-
+    display.innerHTML = ''
+    
 }
 
 )})
@@ -103,3 +114,5 @@ operatorsBtns.forEach(button => {button.addEventListener('click', function() {
 equalsBtn.addEventListener('click', function() {
     updateSolution();
 })
+
+clearBtn.addEventListener('click', clearDisplay);
