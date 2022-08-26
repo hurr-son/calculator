@@ -9,17 +9,18 @@
 .digits,
 .operatorBtns {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
+    grid-template-columns: repeat(3, 70px);
     
 }
 
 button {
     
-    font-size: 35px;
+    font-size: 25px;
     padding: 10px;
 }
 
 #display {
+    
     font-size: 45px;
     text-align: end;
 }
