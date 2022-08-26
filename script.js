@@ -6,10 +6,28 @@ const subtractBtn = document.getElementById("subtract")
 const multiplyBtn = document.getElementById("multiply")
 const divideBtn = document.getElementById("divide")
 const equalsBtn = document.getElementById("equals")
-const clearBtn = document.getElementById("clear");
+const clearBtn = document.getElementById("clear")
 
 
 document.addEventListener('mousedown', (event) => {
+    if(event.target.innerHTML == "+") {
+        cumulativeArg.operator += event.target.innerHTML;
+        display.innerHTML = '';
+    }
+    if(event.target.innerHTML == "-") {
+        cumulativeArg.operator += event.target.innerHTML;
+        display.innerHTML = '';
+    }
+    if(event.target.innerHTML == "*") {
+        cumulativeArg.operator += event.target.innerHTML;
+        display.innerHTML = '';
+    }
+    if(event.target.innerHTML == "/") {
+        cumulativeArg.operator += event.target.innerHTML;
+        display.innerHTML = '';
+    }
+    if(event.target.innerHTML == "=") {updateSolution();}
+    if(event.target.innerHTML == "C") {clearDisplay();}
     if(event.target.innerHTML == "0") 
     {display.innerHTML += event.target.innerHTML;
     getArgs();}
@@ -39,6 +57,58 @@ document.addEventListener('mousedown', (event) => {
     getArgs();}
     if(event.target.innerHTML == "9") 
     {display.innerHTML += event.target.innerHTML;
+    getArgs();}
+
+})
+document.addEventListener('keydown', (event) => {
+    if(event.key == "Enter") {
+        updateSolution();
+    }
+    if(event.key == "+") {
+        cumulativeArg.operator += event.key;
+        display.innerHTML = '';
+    }
+    if(event.key == "-") {
+        cumulativeArg.operator += event.key;
+        display.innerHTML = '';
+    }
+    if(event.key == "*") {
+        cumulativeArg.operator += event.key;
+        display.innerHTML = '';
+    }
+    if(event.key == "/") {
+        cumulativeArg.operator += event.key;
+        display.innerHTML = '';
+    }
+    if(event.key == "0") 
+    {display.innerHTML += event.key;
+    getArgs();}
+    if(event.key == "1") 
+    {display.innerHTML += event.key;
+    getArgs();}
+    if(event.key == "2") 
+    {display.innerHTML += event.key;
+    getArgs();}
+    if(event.key == "3") 
+    {display.innerHTML += event.key;
+    getArgs();}
+    if(event.key == "4") 
+    {display.innerHTML += event.key;
+    getArgs();}
+    if(event.key == "5") 
+    {display.innerHTML += event.key;
+    getArgs();}
+    if(event.key == "6") 
+    {display.innerHTML += event.key;
+    getArgs();}
+    if(event.key == "7") 
+    {display.innerHTML += event.key;
+    getArgs();}
+    if(event.key == "8") 
+    {display.innerHTML += event.key;
+    getArgs();}
+    if(event.key == "9") 
+    {display.innerHTML += event.key;
     getArgs();}
 
 })
@@ -115,25 +185,10 @@ function updateSolution() {
 }
 
 
-// digits.forEach(digit => {digit.addEventListener('click', function() {
-    
-//     getArgs()
-    
-// })})
 
 
 
-operatorsBtns.forEach(button => {button.addEventListener('click', function() {
-    cumulativeArg.operator = button.textContent;
-    display.innerHTML = ''
-    
-}
-
-)})
 
 
-equalsBtn.addEventListener('click', function() {
-    updateSolution();
-})
 
-clearBtn.addEventListener('click', clearDisplay);
+
